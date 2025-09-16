@@ -62,5 +62,9 @@
   <ItemGroup>
     <Build Include="dbo\Tables\tb_Users.sql" />
     <Build Include="dbo\Tables\tb_Books.sql" />
+    <Build Include="dbo\Tables\tb_UserRoles.sql" />
+    <Build Include="dbo\Tables\tb_UserClaims.sql" />
+    <Build Include="dbo\Tables\tb_Genres.sql" />
+    <Build Include="dbo\Tables\tb_Publishers.sql" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
-﻿using BookCatalog.Core.Domain.Entities;
+﻿using BookCatalog.Common.Util.Entities;
+using BookCatalog.Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -36,10 +37,9 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
             .HasColumnName("ISBN");
 
         builder
-            .Property(p => p.Genre)
-            .HasColumnType("varchar(255)")
+            .Property(p => p.GenreId)
             .IsRequired()
-            .HasColumnName("Genre");
+            .HasColumnName("GenreId");
 
         builder
             .Property(p => p.Author)
@@ -48,10 +48,9 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
             .HasColumnName("Author");
 
         builder
-            .Property(p => p.Publisher)
-            .HasColumnType("varchar(255)")
+            .Property(p => p.PublisherId)
             .IsRequired()
-            .HasColumnName("Publisher");
+            .HasColumnName("PublisherId");
 
         builder
             .Property(p => p.Synopsis)
@@ -85,11 +84,22 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
         builder
             .Ignore(s => s.Name);
 
-        // 1 : * => Usuario : Candidaturas
+        // 1 : * => Usuario : livros
         builder
             .HasOne(a => a.User)
             .WithMany(t => t.Books)
             .HasForeignKey(a => a.CodeUser);
 
+        // 1 : * => Gênero pode estar em vários livros
+        builder
+            .HasOne(b => b.Genre)
+            .WithMany(g => g.Books)
+            .HasForeignKey(b => b.GenreId);
+
+        // 1 : * => Editora pode publicar vários livros
+        builder
+            .HasOne(b => b.Publisher)
+            .WithMany(p => p.Books)
+            .HasForeignKey(b => b.PublisherId);
     }
 }

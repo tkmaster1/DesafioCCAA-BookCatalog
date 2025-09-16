@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookCatalog.Common.Util\BookCatalog.Common.Util.csproj" />
+    <ProjectReference Include="..\BookCatalog.Core.Data\BookCatalog.Core.Data.csproj" />
+    <ProjectReference Include="..\BookCatalog.Core.Service\BookCatalog.Core.Service.csproj" />
+  </ItemGroup>
+
+</Project>

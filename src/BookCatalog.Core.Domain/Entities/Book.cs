@@ -1,4 +1,6 @@
-﻿namespace BookCatalog.Core.Domain.Entities;
+﻿using BookCatalog.Common.Util.Entities;
+
+namespace BookCatalog.Core.Domain.Entities;
 
 public class Book : Entity
 {
@@ -13,19 +15,9 @@ public class Book : Entity
     public string ISBN { get; set; } = default!;
 
     /// <summary>
-    /// Gênero literário
-    /// </summary>
-    public string Genre { get; set; } = default!;
-
-    /// <summary>
     /// Nome do autor
     /// </summary>
     public string Author { get; set; } = default!;
-
-    /// <summary>
-    /// Editora
-    /// </summary>
-    public string Publisher { get; set; } = default!;
 
     /// <summary>
     /// Sinopse ou descrição do livro
@@ -37,11 +29,33 @@ public class Book : Entity
     /// </summary>
     public string CoverImagePath { get; set; }
 
+    /// <summary>
+    /// Data da Publicação
+    /// </summary>
+    public DateTime PublishedDate { get; set; }
+
     #region EF Relations
 
-    public Guid CodeUser { get; set; }
+    /// <summary>
+    /// Identificador único do usuário
+    /// </summary>
+    public string CodeUser { get; set; }
+
+    /// <summary>
+    /// Gênero literário
+    /// </summary>
+    public int GenreId { get; set; }
+
+    /// <summary>
+    /// Editora
+    /// </summary>
+    public int PublisherId { get; set; } = default!;
 
     public User User { get; set; } = default!;
+
+    public Genre Genre { get; set; } = default!;
+
+    public Publisher Publisher { get; set; } = default!;
 
     #endregion
 }

@@ -11,11 +11,11 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.ToTable("tb_Users", "dbo");
 
         builder
-            .Property(p => p.Code)
+            .Property(p => p.CodeUser)
             .HasColumnName("Id");
 
         builder
-            .HasKey(p => p.Code)
+            .HasKey(p => p.CodeUser)
             .HasName("PK_TB_Users");
 
         builder
@@ -58,5 +58,9 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .Property(p => p.Status)
             .IsRequired()
             .HasColumnName("Status");
+
+        builder
+            .Ignore(s => s.Code);
+
     }
 }

@@ -1,0 +1,6 @@
+@BookCatalog.Core.WebApi_HostAddress = http://localhost:5220
+
+GET {{BookCatalog.Core.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

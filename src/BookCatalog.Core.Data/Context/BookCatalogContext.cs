@@ -21,6 +21,14 @@ public class BookCatalogContext : DbContext
 
     public DbSet<Book> TBBooks { get; set; }
 
+    public DbSet<UserRoles> TbUserRoles { get; set; }
+
+    public DbSet<UserClaims> TbUUserClaims { get; set; }
+
+    public DbSet<Genre> TbGenres { get; set; }
+
+    public DbSet<Publisher> TbPublishers { get; set; }
+
     #endregion
 
     #region ModelBuilder e SaveChanges
@@ -51,9 +59,13 @@ public class BookCatalogContext : DbContext
     /// </summary>
     /// <param name="modelBuilder"></param>
     protected void ApplyConfigurationsFromEntity(ModelBuilder modelBuilder)
-    {       
-        modelBuilder.Entity<User>().ToTable("tb_Users").HasKey(t => t.Code);
-        modelBuilder.Entity<Book>().ToTable("tb_Books").HasKey(t => t.Code);       
+    {
+        modelBuilder.Entity<User>().ToTable("tb_Users").HasKey(t => t.CodeUser);
+        modelBuilder.Entity<Book>().ToTable("tb_Books").HasKey(t => t.Code);
+        modelBuilder.Entity<UserRoles>().ToTable("tb_UserRoles").HasKey(x => new { x.CodeUser, x.RoleName });
+        modelBuilder.Entity<UserClaims>().ToTable("tb_UserClaims").HasKey(t => t.Code);
+        modelBuilder.Entity<Genre>().ToTable("tb_Genres").HasKey(t => t.Code);
+        modelBuilder.Entity<Publisher>().ToTable("tb_Publishers").HasKey(t => t.Code);
     }
 
     #endregion

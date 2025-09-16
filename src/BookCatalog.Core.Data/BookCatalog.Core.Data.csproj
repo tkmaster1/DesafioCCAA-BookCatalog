@@ -3,15 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="15.0.1" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
       <PrivateAssets>all</PrivateAssets>
@@ -23,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookCatalog.Core.Domain\BookCatalog.Core.Domain.csproj" />
+    <ProjectReference Include="..\BookCatalog.Core.Service\BookCatalog.Core.Service.csproj" />
   </ItemGroup>
 
 </Project>
